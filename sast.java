@@ -16,10 +16,10 @@ public class MoreSastVulnerabilities {
         Runtime.getRuntime().exec(cmd);
     }
 
-    // 2. Weak Hash Algorithm (Medium)
+    // 2. Secure Hash Algorithm (replaced SHA-1 with SHA-256 per CWE-327)
     public byte[] weakHash(String input) throws Exception {
 
-        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
 
         return md.digest(input.getBytes());
     }
@@ -32,10 +32,10 @@ public class MoreSastVulnerabilities {
         return random.nextInt();
     }
 
-    // 4. Weak Encryption Algorithm (High)
+    // 4. Secure Encryption Algorithm (replaced DES with AES/GCM/NoPadding per CWE-327)
     public byte[] encrypt(byte[] data) throws Exception {
 
-        Cipher cipher = Cipher.getInstance("DES");
+        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
 
         return cipher.doFinal(data);
     }
